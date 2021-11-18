@@ -1,0 +1,36 @@
+{% extends "ResultsApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ nickname| safe}},
+        datasets: [{
+            type: 'bar',
+            label: 'POTY',
+            data: {{ poty| safe}}, // HERE CHANGE
+            backgroundColor: 'rgba(46, 204, 113, 1)',
+
+                },
+        {
+            type: 'bar',
+            label: 'MOTY',
+            data: {{ moty| safe}}, //HERE CHANGE
+            backgroundColor: 'rgba(249, 105, 14, 1)',
+                }],
+            },
+        options: {
+            animation: {
+                duration: 10000,
+                }
+        }
+        });
+    </script>
+
+{% endblock %}

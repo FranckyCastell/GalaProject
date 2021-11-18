@@ -1,0 +1,66 @@
+{% extends "HomeApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <section id="home">
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 h-100">
+                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-8 align-self-end">
+                        <h1 class="text-white font-weight-bold">Sa Bona Merda FC</h1>
+                        <hr class="divider" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 mb-5">Benvinguts a la Web Oficial de Sa Bona Merda FC on decidirem els
+                            guanyadors del Moty & Poty de l'Any 2021</p>
+                        <a class="btn btn-primary btn-xl text-white" href="/results">Resultats</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </section>
+
+    <section class="page-section bg-dark" id="votacions">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="lead text-white mt-0 display-5">Votacións</h2>
+                    <hr class="divider divider-light" />
+                    <p style="color: white;" class="lead text-white mb-4">A continuació observareu els participants de
+                        la
+                        Gala
+                        d'aquest Any, amb una
+                        descripció de cada un dels membres.</p>
+                </div>
+            </div>
+        </div>
+        <section class="container row" style="margin: auto; text-align: center; width: 75%;">
+            {% for participant in participants %}
+            <div class="col-4 card mx-3 my-5" style="width: 18rem;">
+                {% if participant.img %}
+                <p><img alt="" src="{{participant.img.url}}" width="200" height="300"
+                        class="rounded mx-auto card-img-top img-part pt-4 zoom"></p>
+                {% else %}
+                <p></p>
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title text-dark lead fw-bold fs-4">{{participant.nickname}}
+                    </h5>
+                    <p class="lead card-text text-dark">{{participant.description}}</p>
+                </div>
+                <section class="mb-3">
+                    <p class="lead"> Vote </p>
+                    <hr class="mb-4">
+                    <form action="/" method="POST">{% csrf_token %}
+                        <input type='hidden' value='{{participant.id}}' name='id'>
+                        <button name="poty" type="submit" class="btn btn-outline-success mx-3">Poty</button>
+                        <button name="moty" type="submit" class="btn btn-outline-danger mx-3">Moty</button>
+                    </form>
+                </section>
+            </div>
+            {% endfor %}
+        </section>
+    </section>
+{% endblock %}

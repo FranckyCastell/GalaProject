@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- HEAD TEMPLATE -->
+    {% include "HomeApp/head.html" %}
+<!-- END HEAD TEMPLATE -->
+
+<body>
+
+    <!-- NAV TEMPLATE -->
+    {% include "HomeApp/nav.html" %}
+    <!-- END NAV TEMPLATE -->
+
+
+    <!-- MAIN CONTENT -->
+        {% block content %}
+
+        {% endblock %}
+    <!-- END MAIN CONTENT -->
+
+
+    <!-- FOOTER TEMPLATE -->
+        {% include "HomeApp/footer.html" %}
+    <!-- END FOOTER TEMPLATE -->
+
+</body>
+
+</html>
