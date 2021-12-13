@@ -21,7 +21,7 @@ pip3
 _Clonando el repositorio_
 
 ```
-git clone https://github.com/FranckyCastell/VoteSystem-Django.git
+git clone https://github.com/FranckyCastell/VoteSystem.git
 ```
 
 _Instalando las Dependencias_
